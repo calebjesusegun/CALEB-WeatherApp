@@ -6,20 +6,20 @@ const api = {
 const searchbox = document.querySelector('.search-box');
 searchbox.addEventListener('keypress', setQuery);
 
-function setQuery(e){
-    if(e.keyCode == 13){
+function setQuery(e) {
+    if (e.keyCode == 13) {
         getWeather(searchbox.value);
     }
 }
 
-function getWeather(index){
+function getWeather(index) {
     fetch(`${api.base}weather?q=${index}&units=metric&APPID=${api.key}`)
         .then(zone => {
             return zone.json();
         }).then(displayResults).catch(displayError);
 }
 
-function displayResults(weather){
+function displayResults(weather) {
     console.log(weather);
     let city = document.querySelector('.location .city');
     city.textContent = `${weather.name}, ${weather.sys.country}`;
@@ -35,12 +35,12 @@ function displayResults(weather){
     weather_el.innerText = weather.weather[0].main;
     let weatherImg = weather_el.innerText;
 
-    if(JSON.stringify(weatherImg).includes("Clouds") == true){
+    if (JSON.stringify(weatherImg).includes("Clouds") == true) {
         let cloudy = document.getElementById("weather__cloud");
         cloudy.style.display = "block";
         let rain = document.getElementById("weather__rain");
         rain.style.display = "none";
-    } else if(JSON.stringify(weatherImg).includes("Rain") == true){
+    } else if (JSON.stringify(weatherImg).includes("Rain") == true) {
         let rain = document.getElementById("weather__rain");
         rain.style.display = "block";
         let cloudy = document.getElementById("weather__cloud");
@@ -54,12 +54,12 @@ function displayResults(weather){
     error.style.display = "none";
 }
 
-function dateBuilder(d){
+function dateBuilder(d) {
     let months = ["January", "February", "March", "April", "May",
-    "June", "July", "August", "September", "October", "November",
-    "December"];
+        "June", "July", "August", "September", "October", "November",
+        "December"];
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
-    "Friday", "Saturday"];
+        "Friday", "Saturday"];
 
     let day = days[d.getDay()];
     let date = d.getDate();
@@ -69,10 +69,9 @@ function dateBuilder(d){
     return `${day} ${date} ${month} ${year}`
 }
 
-function displayError(){
+function displayError() {
     let error = document.getElementById('error');
     error.innerText = "City not Found";
 }
 
 
-<noscript>This website requires JavaScript. To contact us, please send us an email at: <a href="mailto:email@example.com">email@example.com</a></noscript>
