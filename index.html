@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#009578">
+    <title>CALEB | WeatherApp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="logo192R.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+           <input type="text" autocomplete="off" class="search-box" placeholder="Search a location..."> 
+        </header>
+
+        <main>
+            <section class="location">
+                <div class="city"></div>
+                <div class="date"></div>
+            </section>
+            <img id="weather__rain" src="rain.svg" alt="" />
+            <img id="weather__cloud" src="cloud.svg" alt="" />
+            <div class="current">
+                <div class="temp"><span></span> </div>
+                <div class="weather"></div>
+                <div class="hi-low"></div>
+            </div>
+            <div id="error"></div>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="index.js"></script>
+    
+</body>
+</html>
